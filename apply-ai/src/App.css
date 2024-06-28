@@ -1,0 +1,27 @@
+/* App.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: #565657; /* Light blue background color */
+  }
+.custom-header {
+    background-color: #cbc9c5; /* Change header background color */
+    color: white; /* Change text color */
+    border-radius: 25px;
+     
+  }
+  
+  .custom-button {
+    background-color: #343a40; /* Change button background color */
+    color: white; /* Change button text color */
+  }
+  
+  .custom-textarea {
+    background-color: #f8f9fa; /* Change textarea background color */
+    color: #343a40; /* Change textarea text color */
+  }
+ 
