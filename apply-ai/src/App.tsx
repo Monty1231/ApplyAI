@@ -29,7 +29,7 @@ function App() {
       const fileReader = new FileReader();
       fileReader.onload = async (event: ProgressEvent<FileReader>) => {
         const fileContent = event.target?.result as string;
-        const prompt = `The date is ${date}, The name of the company is ${company}, The name of the position is ${position}, Generate a cover letter for the following resume: ${fileContent}`;
+        const prompt = `Make sure to include the provided information: The date is ${date}, The name of the company is ${company}, The name of the position is ${position}, with this information in mind, Generate a cover letter for the following resume: ${fileContent}`;
         const openAIResponse = await initializeOpenAIClient(prompt);
         setResponse(openAIResponse ?? 'No response from OpenAI');
         setIsEditing(true);
@@ -75,7 +75,7 @@ function App() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="company">Input the position:</label>
+            <label htmlFor="position">Input the position:</label>
             <input
               type="text"
               className="form-control"
