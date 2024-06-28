@@ -8,6 +8,7 @@ function App() {
   const [response, setResponse] = useState<string>('');
   const [date, setDate] = useState<string>('');
   const [company, setCompany] = useState<string>('');
+  const [position, setPosition] = useState<string>('');
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,12 +21,15 @@ function App() {
   const handleCompanyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCompany(event.target.value);
   };
+  const handlePositionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPosition(event.target.value);
+  }
   const handleSend = async () => {
     if (selectedFile) {
       const fileReader = new FileReader();
       fileReader.onload = async (event: ProgressEvent<FileReader>) => {
         const fileContent = event.target?.result as string;
-        const prompt = `The date is ${date}, The name of the company is ${company}, Generate a cover letter for the following resume: ${fileContent}`;
+        const prompt = `The date is ${date}, The name of the company is ${company}, The name of the position is ${position}, Generate a cover letter for the following resume: ${fileContent}`;
         const openAIResponse = await initializeOpenAIClient(prompt);
         setResponse(openAIResponse ?? 'No response from OpenAI');
         setIsEditing(true);
@@ -71,6 +75,18 @@ function App() {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="company">Input the position:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="position"
+              name="position"
+              value={position}
+              onChange={handlePositionChange}
+              placeholder="Enter Position name"
+            />
+          </div>
+          <div className="form-group">
             <input
               type="file"
               className="form-control-file"
@@ -84,7 +100,7 @@ function App() {
               className="form-control mt-3 custom-textarea"
               value={response}
               onChange={handleResponseChange}
-              rows={10}
+              rows={40}
               cols={100}
             />
           ) : (
