@@ -14,5 +14,6 @@ This project is a simple web-based application that generates personalized cover
    git clone https://github.com/Monty1231/ApplyAI.git
 
 2. **Enter Open AI API key**
+
    Insert Open AI API key into the .env file
    
